@@ -34,11 +34,11 @@ Route::get('/pay/callback', [PaymentController::class, 'payment_callback'])->nam
 
 //Admin Routes
 Route::middleware('auth', 'isAdmin')->group(function () {
-
+    Route::get('admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
     Route::get('admin/users', [AdminController::class, 'index'])->name('admin.users');
     Route::get('admin/history', [AdminController::class, 'history'])->name('admin.history');
     Route::get('admin/user/{id}', [AdminController::class, 'getUser'])->name('admin.transaction');
-    Route::get('admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+    
     // Route::get('admin/premium', "Admin\UsersController@premium")->name('admin.premium');
     // Route::patch('admin/update/store', "Admin\UsersController@getPremium")->name('admin.update.store');
     // Route::post('admin/users/store', "Admin\UsersController@store")->name('admin.users.store');

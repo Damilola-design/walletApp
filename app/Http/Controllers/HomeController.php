@@ -26,11 +26,12 @@ class HomeController extends Controller
     public function index()
     {
         if (Auth::user()->role === 'admin') {
-            return view('admin.dashboard');
-        }else
+            return redirect('admin/dashboard');
+        }
+        elseif(Auth::user()->role === 'user'){
 
         $user = Auth::user();
-        
+ 
         // ->join('payments', 'users.id', '=', 'payments.user_id')
         // ->select('users.email as user_email', 'payments.amount as payment_email')
         // ->get();
@@ -38,6 +39,7 @@ class HomeController extends Controller
         $payments = Payment::where('user_id', $user->id)->sum('amount');
         //  dd($payments);
         return view('home', compact('user', 'payments'));
+        }
     }
 
     public function getTran()

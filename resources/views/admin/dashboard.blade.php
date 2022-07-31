@@ -1,5 +1,5 @@
 @extends('admin.layouts.admin-dash-layout')
-@section('title', 'Dashboard')
+@section('title', 'Admin Dashboard')
 @section('content')
 <section class="content">
 <div class="container-fluid">
@@ -39,7 +39,7 @@
 <span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span>
 <div class="info-box-content">
 <span class="info-box-text">Sales</span>
-<span class="info-box-number">{{ $tran_count }}</span>
+<span class="info-box-number">{{ $tran_counts }}</span>
 </div>
 
 </div>

@@ -15,13 +15,16 @@ class AdminController extends Controller
         return view('admin.user', ['users' => $users]);
     }
     public function dashboard(){
+        
         $users = User::all();
+        
         $deposits = DB::table('payments')->sum('amount');
         $max_pays = DB::table('payments')->max('amount');
         $min_pays = DB::table('payments')->min('amount');
         $avg_pays = DB::table('payments')->avg('amount');
-        $tran_count = DB::table('payments')->count();
-        return view('admin.dashboard', compact('users', 'deposits', 'max_pays', 'min_pays', 'avg_pays', 'tran_count'));
+        $tran_counts = DB::table('payments')->count();
+        // dd($tran_count);
+        return view('admin.dashboard', compact('users', 'deposits', 'max_pays', 'min_pays', 'avg_pays', 'tran_counts'));
     }
     public function history(){
         $histories = Payment::all();
